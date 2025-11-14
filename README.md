@@ -1,4 +1,4 @@
-# OpenMage (Magento 1.9) - Moosend Tracking Module Example
+# OpenMage (Magento 1.9) - Moosend Tracking module
 
 This module provides an example of integrating **Moosend website tracking** into an OpenMage / Magento 1.9 store. It allows you to track user actions such as page views, product views, add-to-cart events, and completed orders using the Moosend tracking library.
 
