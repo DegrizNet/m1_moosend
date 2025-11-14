@@ -2,11 +2,14 @@
 
 This module provides an example of integrating **Moosend website tracking** into an OpenMage / Magento 1.9 store. It allows you to track user actions such as page views, product views, add-to-cart events, and completed orders using the Moosend tracking library.
 
+If you don’t have a Moosend account yet, you can create one here: **[Create Moosend Account](https://trymoo.moosend.com/7t8f4okno6t8)**
+
 ---
 
 ## Features
 
-- **Website Tracking Integration:** Easily add Moosend tracking to your Magento store.
+- **Website Tracking Integration:** Easily add Moosend tracking to your Magento store.  
+  Create your Moosend account here: **[Moosend Signup](https://trymoo.moosend.com/7t8f4okno6t8)**
 - **User Identification:** Track logged-in users or newsletter subscribers.
 - **Product and Order Tracking:** Track product views, add-to-cart events, and completed orders.
 - **Simple Configuration:** Configure your Moosend Website ID through the Magento admin panel.
@@ -26,11 +29,13 @@ This module implements the Moosend tracking library according to official [Moose
 
 1. **Download the Module:** Clone or download this repository.
 2. **Upload the Files:** Copy the contents of the module to the root folder (`public_html`) of your Magento store.
-3. **Configure Moosend Website ID:**
+3. **Create Moosend Account (if needed):**  
+   👉 **[Moosend Signup Link](https://trymoo.moosend.com/7t8f4okno6t8)**
+4. **Configure Moosend Website ID:**
    - Go to **System > Configuration > Degriz Moosend > Moosend Tracking Settings**.
    - Enter your Moosend Website ID.
-4. **Refresh Cache:** Log out and log back into the Magento admin panel, then refresh the cache.
-5. **Verify Tracking:** Check that Moosend tracking is working by visiting your site and using the browser console.
+5. **Refresh Cache:** Log out and log back into the Magento admin panel, then refresh the cache.
+6. **Verify Tracking:** Check that Moosend tracking is working by visiting your site and using the browser console.
 
 ---
 
@@ -59,4 +64,5 @@ I specialize in custom Magento development and have successfully completed numer
 - **Performance Optimization:** Ensuring that your Magento store runs efficiently and provides a seamless user experience.
 - **Ongoing Support and Maintenance:** Offering support to keep your Magento store up-to-date and running smoothly.
 
-For more information or inquiries, please visit [Degriz Magento eCommerce Development](https://www.degriz.net/).
+For more information or inquiries, please visit  
+👉 **[Degriz Magento eCommerce Development](https://www.degriz.net/)**
