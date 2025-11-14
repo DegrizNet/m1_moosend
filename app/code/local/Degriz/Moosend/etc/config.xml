@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 Degriz. All rights reserved.
+ */
+-->
+<config>
+    <modules>
+        <Degriz_Moosend>
+            <version>2.0.0</version>
+        </Degriz_Moosend>
+    </modules>
+    
+    <global>
+        <blocks>
+            <degriz_moosend>
+                <class>Degriz_Moosend_Block</class>
+            </degriz_moosend>
+        </blocks>
+        
+        <helpers>
+            <degriz_moosend>
+                <class>Degriz_Moosend_Helper</class>
+            </degriz_moosend>
+        </helpers>
+        
+        <models>
+            <degriz_moosend>
+                <class>Degriz_Moosend_Model</class>
+            </degriz_moosend>
+        </models>
+        
+        <events>
+            <controller_front_send_response_before>
+                <observers>
+                    <degriz_moosend_response_before>
+                        <class>degriz_moosend/observer</class>
+                        <method>controllerFrontSendResponseBefore</method>
+                    </degriz_moosend_response_before>
+                </observers>
+            </controller_front_send_response_before>
+            
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <degriz_moosend_add_product>
+                        <class>degriz_moosend/observer</class>
+                        <method>checkoutCartAddProductComplete</method>
+                    </degriz_moosend_add_product>
+                </observers>
+            </checkout_cart_add_product_complete>
+            
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <degriz_moosend_order_success>
+                        <class>degriz_moosend/observer</class>
+                        <method>checkoutOnepageControllerSuccess</method>
+                    </degriz_moosend_order_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            
+            <sales_quote_remove_item>
+                <observers>
+                    <degriz_moosend_remove_product>
+                        <class>degriz_moosend/observer</class>
+                        <method>salesQuoteRemoveItem</method>
+                    </degriz_moosend_remove_product>
+                </observers>
+            </sales_quote_remove_item>
+        </events>
+    </global>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <degriz_moosend>
+                    <file>degriz_moosend.xml</file>
+                </degriz_moosend>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <degriz_moosend>
+                                            <title>Degriz Moosend Tracking</title>
+                                        </degriz_moosend>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    
+    <default>
+        <degriz_moosend>
+            <settings>
+                <website_id></website_id>
+            </settings>
+        </degriz_moosend>
+    </default>
+</config>

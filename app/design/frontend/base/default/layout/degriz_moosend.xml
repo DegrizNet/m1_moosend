@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 Degriz. All rights reserved.
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="degriz_moosend/track" name="degriz_moosend_track" template="degriz/moosend/track.phtml"/>
+        </reference>
+    </default>
+</layout>

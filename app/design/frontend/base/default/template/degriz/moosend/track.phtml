@@ -1,0 +1,140 @@
+<?php
+/**
+ * Copyright © 2025 Degriz. All rights reserved.
+ */
+
+$helper = Mage::helper('degriz_moosend');
+if (!$helper->isEnabled()) {
+    return;
+}
+
+$trackingData = $this->getTrackingData();
+?>
+<!-- Degriz Moosend Website Tracking -->
+<script type="text/javascript">
+//<![CDATA[
+(function(t, n, e, o, a) {
+    t.MooTrackerObject = a;
+    t[a] = t[a] || function() {
+        return t[a].q ? void t[a].q.push(arguments) : void(t[a].q = [arguments])
+    }
+    var l = ~~(Date.now() / 3e5),
+        i = document.createElement(e);
+    i.async = !0, i.src = o + "?ts=" + l;
+    var m = document.getElementsByTagName(e)[0];
+    m.parentNode.insertBefore(i, m);
+})(window, document, "script", "//cdn.stat-track.com/statics/moosend-tracking.min.js", "mootrack");
+
+var degrizMoosendData = <?php echo json_encode($trackingData); ?>;
+
+// Wait for script to load before initializing
+if (typeof mootrack !== 'undefined') {
+    initTracking();
+} else {
+    window.addEventListener('load', initTracking);
+}
+
+function initTracking() {
+    if (!degrizMoosendData.current_website_id) return;
+
+    mootrack('init', degrizMoosendData.current_website_id);
+
+    // Handle order completion
+    if (degrizMoosendData.order_info && degrizMoosendData.order_info.order_data) {
+        try {
+            var email = degrizMoosendData.order_info.email;
+            var name = degrizMoosendData.order_info.name;
+            var order_total_price = parseFloat(degrizMoosendData.order_info.order_total_price);
+
+            // Transform products into proper array for Moosend
+            var products = degrizMoosendData.order_info.order_data.products.map(function(p) {
+                return {
+                    itemCode: p.itemCode,
+                    itemPrice: parseFloat(p.itemPrice),
+                    itemUrl: p.itemUrl,
+                    itemQuantity: parseInt(p.itemQuantity),
+                    itemTotalPrice: parseFloat(p.itemTotalPrice),
+                    itemImage: p.itemImage,
+                    itemName: p.itemName,
+                    properties: p.properties || {}
+                };
+            });
+
+            mootrack('identify', email, name);
+            mootrack('trackOrderCompleted', products, order_total_price);
+        } catch(e) {
+            console.error('Moosend order tracking error:', e);
+        }
+    }
+
+    // Handle user identification
+    if (degrizMoosendData.user_data) {
+        try {
+            mootrack('identify', degrizMoosendData.user_data.email, degrizMoosendData.user_data.name);
+        } catch(e) {
+            console.error('Moosend identify error:', e);
+        }
+    }
+
+    // Handle product page view
+    if (degrizMoosendData.is_product_page && degrizMoosendData.current_product) {
+        try {
+            mootrack('track', 'PAGE_VIEWED', [degrizMoosendData.current_product]);
+        } catch(e) {
+            console.error('Moosend product page error:', e);
+            mootrack('trackPageView');
+        }
+    } else {
+        mootrack('trackPageView');
+    }
+}
+
+// Handle add to cart (from session)
+<?php
+$addToCartData = Mage::getSingleton('core/session')->getDegrizMoosendAddToCart();
+if ($addToCartData) {
+    Mage::getSingleton('core/session')->unsDegrizMoosendAddToCart();
+    $props = ['itemCategory' => $addToCartData['category'] ?? ''];
+?>
+try {
+    mootrack('trackAddToOrder',
+        '<?php echo $addToCartData["id"]; ?>',
+        <?php echo $addToCartData["price"]; ?>,
+        '<?php echo $addToCartData["url"]; ?>',
+        <?php echo $addToCartData["quantity"]; ?>,
+        <?php echo $addToCartData["total"]; ?>,
+        '<?php echo $addToCartData["name"]; ?>',
+        '<?php echo $addToCartData["image"]; ?>',
+        <?php echo json_encode($props); ?>,
+        true
+    );
+} catch(e) {
+    console.error('Moosend add to cart error:', e);
+}
+<?php } ?>
+
+// Handle remove from cart (from session)
+<?php
+$removeFromCartData = Mage::getSingleton('core/session')->getDegrizMoosendRemoveFromCart();
+if ($removeFromCartData) {
+    Mage::getSingleton('core/session')->unsDegrizMoosendRemoveFromCart();
+    $props = ['itemCategory' => $removeFromCartData['category'] ?? ''];
+?>
+try {
+    mootrack('removeFromOrder',
+        '<?php echo $removeFromCartData["id"]; ?>',
+        <?php echo $removeFromCartData["price"]; ?>,
+        '<?php echo $removeFromCartData["url"]; ?>',
+        <?php echo $removeFromCartData["total"]; ?>,
+        '<?php echo $removeFromCartData["name"]; ?>',
+        '<?php echo $removeFromCartData["image"]; ?>',
+        <?php echo json_encode($props); ?>,
+        true
+    );
+} catch(e) {
+    console.error('Moosend remove from cart error:', e);
+}
+<?php } ?>
+//]]>
+</script>
+<!-- End Degriz Moosend Website Tracking -->

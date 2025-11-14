@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 Degriz. All rights reserved.
+ */
+-->
+<config>
+    <tabs>
+        <degriz_moosend_tab translate="label" module="degriz_moosend">
+            <label>Degriz Moosend</label>
+            <sort_order>500</sort_order>
+        </degriz_moosend_tab>
+    </tabs>
+    
+    <sections>
+        <degriz_moosend translate="label" module="degriz_moosend">
+            <label>Moosend Tracking Settings</label>
+            <tab>degriz_moosend_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            
+            <groups>
+                <settings translate="label" module="degriz_moosend">
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    
+                    <fields>
+                        <website_id translate="label comment" module="degriz_moosend">
+                            <label>Moosend Website ID</label>
+                            <comment><![CDATA[Please find your Website ID by clicking the corresponding Tracked Website under your account settings of your Moosend Account (Account > Tracked Websites).]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </website_id>
+                    </fields>
+                </settings>
+            </groups>
+        </degriz_moosend>
+    </sections>
+</config>

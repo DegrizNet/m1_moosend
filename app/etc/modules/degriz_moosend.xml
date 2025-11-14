@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Degriz. All rights reserved.
+ */
+-->
+<config>
+    <modules>
+        <Degriz_Moosend>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+                <Mage_Catalog />
+                <Mage_Checkout />
+            </depends>
+        </Degriz_Moosend>
+    </modules>
+</config>
