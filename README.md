@@ -33,3 +33,30 @@ This module implements the Moosend tracking library according to official [Moose
 5. **Verify Tracking:** Check that Moosend tracking is working by visiting your site and using the browser console.
 
 ---
+
+## Notice
+
+- Always test the module on a development version before deploying it to your production environment.
+- Ensure that your FAQs comply with search engine guidelines for structured data.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Disclaimer
+
+- This module is provided "as is," without any warranty of any kind, express or implied. Use it at your own risk.
+- The author takes no responsibility for any issues or problems that arise from using this module.
+- Free support is not provided.
+- You are free to use and modify this module, but you cannot resell it.
+
+## Additional Information
+
+I specialize in custom Magento development and have successfully completed numerous projects tailored to optimize eCommerce functionalities. My services include:
+
+- **Custom Module Development:** Creating tailored solutions to meet your specific business needs.
+- **Integration Services:** Implementing and integrating structured data to enhance your SEO efforts.
+- **Performance Optimization:** Ensuring that your Magento store runs efficiently and provides a seamless user experience.
+- **Ongoing Support and Maintenance:** Offering support to keep your Magento store up-to-date and running smoothly.
+
+For more information or inquiries, please visit [Degriz Magento eCommerce Development](https://www.degriz.net/).
